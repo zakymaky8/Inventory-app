@@ -1,0 +1,68 @@
+<form action="/" method="POST" class="album-form">
+
+    <div>
+        <label for="album-title">Music Title: </label>
+        <input type="text" name="album_title" id="album-title">
+    </div>
+
+    <div>
+        <label for="artist-name">Artist Name: </label>
+        <input type="text" name="artist_name" id="artist-name">
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>Select Genres:</legend><br>
+
+            <label>
+                <input type="radio" name="genre" value="Pop"> Pop
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Rock"> Rock
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Hip-Hop/Rap"> Hip-Hop/Rap
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Jazz"> Jazz
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Electronic/Dance"> Electronic/Dance
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="R&B/Soul"> R&B/Soul
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Country"> Country
+            </label><br>
+
+            <label>
+                <input type="radio" name="genre" value="Other"> Other
+            </label><br>
+        </fieldset>
+    </div>
+
+    <div>
+        <label for="release-year">Release Year: </label>
+        <input type="year" name="release_year" id="release-year">
+    </div>
+
+    <div>
+        <label for="personal-rating">Personal Rating: </label>
+        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10">
+    </div>
+    <div>
+        <label for="description">
+            Description: <textarea name="description" id="description">Describe your album ....</textarea>
+        </label>
+    </div>
+
+    <button type="submit">Add</button>
+
+</form>

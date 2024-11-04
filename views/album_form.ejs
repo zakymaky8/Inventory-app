@@ -1,0 +1,76 @@
+<form action="/" method="POST" class="album-form">
+
+    <div>
+        <label for="album-title">Album Title: </label>
+        <input type="text" name="album_title" id="album-title">
+    </div>
+
+    <div>
+        <label for="artist-name">Artist Name: </label>
+        <input type="text" name="artist_name" id="artist-name">
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>Select Genres:</legend><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Pop"> Pop
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Rock"> Rock
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Hip-Hop/Rap"> Hip-Hop/Rap
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Jazz"> Jazz
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Electronic/Dance"> Electronic/Dance
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="R&B/Soul"> R&B/Soul
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Country"> Country
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="genre" value="Other"> Other
+            </label><br>
+        </fieldset>
+    </div>
+
+    <div>
+        <label for="release-year">Album Release Year: </label>
+        <input type="year" name="release_year" id="release-year">
+    </div>
+    <div>
+        <label for="cover-url">Paste cover url: </label>
+        <input type="text" name="cover_url" id="cover-url">
+    </div>
+    <div>
+        <label for="personal-rating">Personal Rating: </label>
+        <input type="number" name="personal_rating" id="personal-rating">
+    </div>
+    <div>
+        <label for="fav-track">
+            Most Fav Track <input type="text" name="most_fav_track" id="fav-track" placeholder="write gentely ">
+        </label>
+    </div>
+    <div>
+        <label for="description">
+            Description: <textarea name="description" id="description">Describe your album ....</textarea>
+        </label>
+    </div>
+
+    <button type="submit">Add</button>
+
+</form>

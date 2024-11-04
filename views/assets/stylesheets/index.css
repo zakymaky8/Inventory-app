@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0e3659;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 20vh 8vh 1fr 5vh;
+    grid-template-areas: 'header header'
+                          'nav nav'
+                          'main side'
+                          'footer footer';
+    gap: 5px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 3px 3px 6px 1px black;
+    background: #03313b;
+    grid-area: header;
+}
+
+header h1 {
+    font-size: 39pt;
+}
+
+.names {
+    color: rgb(145, 112, 15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+    gap: 5px;
+    font-size: 12px;
+}
+.names > h3{
+    font-style: italic;
+}
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    grid-area: nav;
+}
+.nav-items {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #5bae12;
+    margin-top: 10px;
+    font-size: 18px;
+    box-shadow: 1px 2px 2px 1px black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.active {
+    background: rgb(118, 100, 1);
+}
+
+.nav-items > li {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+}
+.nav-items > li:hover, .preferences button:hover, .artist-form button:hover, .album-form button:hover, .music-type button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    background: rgb(118, 100, 1);
+}
+
+main {
+    margin: 10px;
+    box-shadow: 2px 2px 2px 2px black;
+    border: 2px solid rgb(0, 0, 0);
+    min-height: 65vh;
+    background-image: url('../images/music-bg.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-overflow: auto;
+    color: rgb(1, 31, 7);
+    border-radius: 10px;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    grid-area: side;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10vh;
+    transform: translateY(-6.5vh);
+}
+
+aside input[type='search'], .artist-form input, .artist-form select, .album-form input {
+    width: 100px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    color: white;
+    padding-left: 10px;
+    border-radius: 10px;
+    height: 30px;
+    outline: 2px solid rgb(74, 47, 47);
+}
+
+.preferences {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+    height: fit-content;
+}
+.preferences button, .artist-form button , .album-form button, .music-type button{
+    width: 100px;
+    height: 40px;
+    font-size: 22px;
+    background: #065261;
+    border: none;
+    box-shadow: 2px 2px 5px 2px black;
+    border-radius: 15px;
+    color: #5bae12;
+}
+
+.preferences button:active {
+    background: none;
+}
+main > * {
+    background-color: rgba(47, 45, 45, 0.7);
+    padding: 20px;
+    color: rgb(190, 189, 200)
+}
+
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    background: rgb(1, 32, 39);
+    margin-bottom: -10px;
+    padding: 10px;
+}
+footer a {
+    color: #5ec206;
+}
+
+.welcome {
+    min-height: 65vh;
+    padding: 50px;
+}
+
+.artist-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    min-height: 65vh;
+    position: relative;
+}
+
+.artist-form button {
+    align-self: flex-end;
+    position: absolute;
+    bottom: 10px;
+}
+.artist-form input, .artist-form select,.album-form input {
+    background: #4d787c;
+    width: 150px;
+}
+
+.album-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 65vh;
+    align-items: center;
+}
+.album-form button {
+    align-self: flex-end;
+}
+.album-form input {
+    outline: none;
+    margin-right: -40px;
+}
+
+.music-type {
+    display: flex;
+    align-items: center;
+    min-height: 65vh;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+fieldset {
+    border: none;
+}
+@media screen and (max-width: 630px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    aside {
+        transform: translateY(0vh);
+    }
+}

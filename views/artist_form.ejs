@@ -1,0 +1,28 @@
+<form action="/success" method="POST" class="artist-form">
+    <div>
+        <label for="artist-name">Artist Name: </label>
+        <input type="text" name="artist_name" id="artist-name">
+    </div>
+    <div>
+        <label for="artist-country">Country: </label>
+        <select name="artist_country" id="artist-country">
+            <option value="" selected disabled>Select Country</option>
+            <% countries.map(country => { %>
+                <option value= ' <%= country %> ' > <%= country %> </option>
+            <% })  %>
+        </select>
+    </div>
+    <div>
+        <label for="album-count">Album Count: </label>
+        <input type="number" name="album_count" id="album-count">
+    </div>
+    <button type="submit">Add</button>
+
+</form>
+
+<!-- const { countries } =  require("countries-list")
+
+
+const countriess = Object.values(countries).map(country => country.name)
+
+console.log(countriess) -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/assets/stylesheets/index.css">
+</head>
+<body>
+    <header>
+        <div class="names">
+            <h1>🎵 Music hub </h1>
+            <h3>Manage Your Music here</h3>
+        </div>
+
+    </header>
+    <nav>
+        <ul class="nav-items">
+            <li class="<%= active==='home' ? 'active' : ''  %>" onclick="window.location.href='/'">Home</li>
+            <li class="<%= active === 'add music' ? 'active' : ''  %>" onclick="window.location.href='/music_type'">Add Music</li>
+            <li class="<%= active === 'add artist' ? 'active' : ''  %>" onclick="window.location.href='/add_artist'">Add Artist</li>
+        </ul>
+    </nav>
+    <main>
+        <%- include(page) %>
+    </main>
+    <aside>
+        <form action="/search" method="POST">
+            <label style="color: #5bae12;" for="search">Search: </label>
+            <input type="search" name="search" id="search" placeholder="search music ...">
+            <!-- <input type="submit" value="🔎"> -->
+        </form>
+        <div class="preferences">
+            <a  class="<%= active==='albums' ? 'active' : ''  %>"  href="/"><button>albums</button></a><br>
+            <a  class="<%= active==='singles' ? 'active' : ''  %>"  href="/"><button>singles</button></a><br>
+            <a  class="<%= active==='from all' ? 'active' : ''  %>"  href=""><button>from all</button></a><br>
+            <a  class="<%= active==='90s' ? 'active' : ''  %>"  href=""><button>90s</button></a><br>
+        </div>
+    </aside>
+    <footer>
+        <a href="https://github.com/zakymaky8" style="text-decoration: none;" > Developer: Zekaryas <%= (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString()%> </a>
+    </footer>
+</body>
+</html>
