@@ -1,5 +1,5 @@
 // const asyncHandler = require("express-async-handler");
-const { getArtists, addArtist, addAlbum, addSingle } = require("../db/query");
+const { getArtists, addArtist, addAlbum, addSingle, get_albums_fromdb, addMusicFromAlbum } = require("../db/query");
 
 const getHomePage = function (req, res)  {
     res.render("index", { title: "Home", page: "home", active: "home" });
@@ -17,19 +17,22 @@ const getArtistForm = function (req, res)  {
                         });
 }
 
-
 const getMusicTypeForm = function (req, res) {
     res.render("index", { title: "Select Music Type", page: "music_form", active: "add music" });
 }
 
+
+
 const postMusicTypeSelection = async function (req, res) {
     const  selectedType = req.body.music_type;
     const artists = await getArtists();
+    const albums  = await get_albums_fromdb()
     console.log(artists)
     res.render("index", { title: "Add Music",
-                          page: selectedType === "album" ? 'album_form' : selectedType === "single" ?  'single_form' : 'music_form',
+                          page: selectedType === "album" ? 'album_form' : selectedType === "single" ?  'single_form' : selectedType === 'in_album_music' ? 'music_in_album' : 'music_form',
                           active: "add music",
-                          artists: artists
+                          artists: artists,
+                          albums: albums
                });
 }
 
@@ -50,6 +53,11 @@ const postSingleMusicData = async function(req, res) {
     res.redirect("/singles");
 }
 
+const postMusicFromAlbumData = async function(req, res) {
+    await addMusicFromAlbum(req.body);
+    res.redirect("/")
+}
+
 
 module.exports = {
             getHomePage,
@@ -58,5 +66,6 @@ module.exports = {
             postMusicTypeSelection,
             postArtistData,
             postAlbumData,
-            postSingleMusicData
+            postSingleMusicData,
+            postMusicFromAlbumData
         }

@@ -1,11 +1,19 @@
 <form action="/add_music" method="POST" class="music-type">
-    <h4>Select Your Music type: </h4>
-    <label>
-        <input type="radio" name="music_type" value="album"> Album
-    </label><br>
+    <h2>Select Your Music type: </h2>
+    <div>
+        <label>
+            <input type="radio" name="music_type" value="album"> Album
+        </label><br><br>
+    
+        <label>
+            <input type="radio" name="music_type" value="single"> Single
+        </label><br><br>
+    
+        <label>
+            <input type="radio" name="music_type" value="in_album_music">Music In Album
+        </label><br>
 
-    <label>
-        <input type="radio" name="music_type" value="single"> Single
-    </label><br>
+    </div>
+
     <button type="submit">Select</button>
 </form>

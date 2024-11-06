@@ -6,6 +6,7 @@ const { singleRouter } = require("./routes/singleRoute");
 const { allMusicRouter } = require("./routes/allMusicRoute");
 const { albumsRouter } = require("./routes/albumsRoute");
 const { _90sRouter } = require("./routes/90sRoute");
+const { fromAlbumMusicRouter } = require("./routes/fromAlbumMusicRoute");
 
 require("dotenv").config();
 
@@ -23,7 +24,11 @@ app.use("/singles", singleRouter);
 app.use("/all_music", allMusicRouter);
 app.use("/albums", albumsRouter);
 app.use("/90s", _90sRouter)
+app.use("/music_from_albums", fromAlbumMusicRouter)
 
+app.get("/somewhere", (req, res) => {
+    res.render("index", { title: "somewhere", page: "details", active: 'from all'})
+})
 
 app.use((err, req, res, next) => {
     res.send(err.message)

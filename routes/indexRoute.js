@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getHomePage, getArtistForm, getMusicTypeForm, postMusicTypeSelection, postArtistData, postAlbumData, postSingleMusicData } = require("../controllers/indexController");
+const { getHomePage, getArtistForm, getMusicTypeForm, postMusicTypeSelection, postArtistData, postAlbumData, postSingleMusicData, postMusicFromAlbumData } = require("../controllers/indexController");
 
 const indexRouter = Router();
 
@@ -15,7 +15,9 @@ indexRouter.post("/artist_added", postArtistData);
 
 indexRouter.post("/album_added", postAlbumData);
 
-indexRouter.post("/single_added", postSingleMusicData)
+indexRouter.post("/single_added", postSingleMusicData);
+
+indexRouter.post("/music_from_album_added", postMusicFromAlbumData)
 
 
 module.exports = { indexRouter }
