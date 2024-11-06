@@ -1,0 +1,22 @@
+<div class="cards-list">
+    <% items.map(item => { %>
+        <div class="card">
+            <h1><%= item.artist_name  %></h1>
+            <h3><%= item.album_title || item.music_title  %></h3>
+            <div class="oddsends">
+                <span><%= item.album_release_year || item.release_year %></span>
+                <span><%= item.album_personal_rating || item.personal_rating %></span>
+            </div>
+            <button onclick="window.location.href='/albums'">See Detail</button>
+        </div>
+    <% }) %>
+</div>
+
+
+<!-- id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+music_title TEXT NOT NULL,
+genre TEXT,
+release_year  VARCHAR ( 10 ),
+personal_rating INTEGER,
+description TEXT,
+artist_id INTEGER -->

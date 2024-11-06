@@ -17,14 +17,14 @@ const SQL = `
         album_title TEXT NOT NULL,
         album_genres TEXT,
         album_release_year  VARCHAR(10),
-        cover_url TEXT UNIQUE,
+        cover_url TEXT,
         most_fav_tracks TEXT,
         album_personal_rating INTEGER,
         album_description TEXT,
         artist_id INTEGER
     );
     INSERT INTO albums (album_title, album_genres, album_release_year, cover_url, most_fav_tracks, album_personal_rating, album_description, artist_id)
-    VALUES ('Enzira', '{"first": "Afrobeats"}', '2016 EC', 'https://e-cdn-images.dzcdn.net/images/artist/107d2aaf9082af8c2cb2b99f148ae333/500x500-000000-80-0-0.jpg', '{"first": "Saltel Das", "Second": "Enzira"}', 8, 'Enzira is a music album released in 2024. Enzira has 14 songs sung by Mastewal Eyayu', 1);
+    VALUES ('Enzira', 'Afrobeats', '2016 EC', 'https://e-cdn-images.dzcdn.net/images/artist/107d2aaf9082af8c2cb2b99f148ae333/500x500-000000-80-0-0.jpg', '["Saltel Das", "Enzira"]', 8, 'Enzira is a music album released in 2024. Enzira has 14 songs sung by Mastewal Eyayu', 1);
 
     CREATE TABLE IF NOT EXISTS Singles (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

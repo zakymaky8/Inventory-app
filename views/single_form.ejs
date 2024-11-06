@@ -1,13 +1,18 @@
-<form action="/" method="POST" class="album-form">
+<form action="/single_added" method="POST" class="album-form">
 
     <div>
         <label for="album-title">Music Title: </label>
-        <input type="text" name="album_title" id="album-title">
+        <input type="text" name="music_title" id="album-title" required>
     </div>
 
     <div>
         <label for="artist-name">Artist Name: </label>
-        <input type="text" name="artist_name" id="artist-name">
+        <select name="artist_name" id="artist-name" required>
+            <option value="" disabled selected>Select Artist</option>
+            <% artists.map( artist => { %>
+                <option value="<%= artist.artist_name %>"> <%= artist.artist_name %> </option>
+            <% })  %>
+        </select>
     </div>
 
     <div>
@@ -50,7 +55,7 @@
 
     <div>
         <label for="release-year">Release Year: </label>
-        <input type="year" name="release_year" id="release-year">
+        <input type="date" name="release_year" id="release-year">
     </div>
 
     <div>
@@ -59,7 +64,7 @@
     </div>
     <div>
         <label for="description">
-            Description: <textarea name="description" id="description">Describe your album ....</textarea>
+            Description: <textarea name="description" id="description">Describe your music ....</textarea>
         </label>
     </div>
 
