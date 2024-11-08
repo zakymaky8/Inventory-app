@@ -13,6 +13,7 @@ const getMusicFromAlbum = async function (req, res) {
         res.render("index", { title: "From Albums", page: "cards", active: "from album", items: music_from_album })
     } else {
         const music_from_album = await getAllMusicFromOneAlbum(album);
+        console.log(music_from_album)
         res.render("index", { title: `From ${album}`, page: "cards", active: "from album", items: music_from_album})
     }
 }

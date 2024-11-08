@@ -1,0 +1,46 @@
+<% function certify() {
+    const prompt = prompt("Enter password to confirm? ")
+        return prompt === "1234" ? true : false;
+} %>
+
+<div class="album-detail">
+    <div class="name-album">
+        <h1><%= details[0].album_title %></h1><br>
+        <p style="font-size: 10px;">album</p>
+    </div>
+    <div class="remaining-info">
+        <ul class="genres">
+            <% details[0].album_genres.split(',').map(genre => { %>
+                <li><%= genre %></li>
+            <% }) %>
+        </ul>
+        <div class="mini-details">
+            <p><b>Artist Name: </b><strong><%= details[0].artist_name %></strong></p>
+            <p><b>Album Release Year: </b><strong><%= details[0].album_release_year %></strong></p>
+            <p><b>Most Favorite Track: </b><strong><%= details[0].most_fav_tracks %></strong></p>
+            <p><b>Personal Rating: </b><strong><%= details[0].album_personal_rating  %></strong></p>
+            <p><b>Description: </b> <strong><%= details[0].album_description %></strong></p>
+        </div>
+        <div class="btns">
+            <form onsubmit="return certify()" action='<%= '/delete_album/' + details[0].albums_id %> '  method="POST">
+                <button title="delete" style="background: rgb(124, 9, 9);" type="submit">🗑️</button>
+            </form>
+
+            <form action="<%= '/albums/edit/' + details[0].albums_id %>" method="POST">
+                <button title="edit" style="background: rgb(8, 8, 127);">✏️</button>
+            </form>
+        </div>`
+    </div>
+</div>
+
+<script>
+    function certify() {
+        const password = prompt("Enter password to confirm?");
+        if (password === "2020") {
+            return true
+        } else {
+            alert("Incorrect password. Action denied.");
+            return false
+        }
+    }
+</script>

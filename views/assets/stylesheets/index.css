@@ -262,7 +262,7 @@ fieldset {
     justify-content: space-evenly;
 }
 
-.select-album  button {
+.select-album  button, .remaining-info button {
     align-self: flex-end;
     padding: 5px;
     border-radius: 5px;
@@ -270,8 +270,63 @@ fieldset {
     color: #5ec206;
 }
 
-.select-album button:hover {
+.select-album button:hover, .remaining-info button:hover {
     background: #000;
+}
+
+.album-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 65vh;
+    gap: 20px;
+}
+.name-album {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #362f2f;
+    border-radius: 5px;
+    padding: 20px;
+    min-width: 45%;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.remaining-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 45%;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.genres {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.genres li {
+    background: #000;
+    padding: 5px;
+    border-radius: 5px;
+}
+.mini-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.mini-details strong {
+    color: rgb(5, 255, 5);
+    font-style: italic;
+}
+
+.remaining-info .btns {
+    align-self: flex-end;
 }
 
 @media screen and (max-width: 630px) {
@@ -281,5 +336,12 @@ fieldset {
     }
     aside {
         transform: translateY(0vh);
+    }
+    .name-album {
+        width: 100%;
+    }
+    .remaining-info {
+        width: 100%;
+        align-items: center;
     }
 }

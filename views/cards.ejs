@@ -4,12 +4,14 @@
             <div class="card">
                 <span style="color:rgb(239, 217, 13);font-size: 10px"><%= active %></span>
                 <h1><%= item.artist_name  %></h1>
-                <h3 style="color: coral;"><%= active==="from album" ? item.music_title : (item.album_title || item.music_title)  %></h3>
+                <h3 style="color: coral;"><%= active==="albums" ?  item.album_title : item.music_title %></h3>
                 <div class="oddsends">
-                    <span><%= active==="from album" ? item.album_release_year : (item.album_release_year || item.release_year) %></span>
-                    <span><%= active === "from album" ? item.personal_rating : (item.album_personal_rating || item.personal_rating) %></span>
+                    <span><%= (active==="from album") ? item.album_release_year : (item.album_release_year || item.release_year) %></span>
+                    <span><%= (active==="from album" || active == "from all") ? item.personal_rating : (item.album_personal_rating || item.personal_rating) %></span>
                 </div>
-                <button onclick="window.location.href='/albums'">See Detail</button>
+                <% const href = active === "albums" ? "/albums/" : active === "singles" ? "/singles/" : active === "from album" ? "/music_from_albums/" : active === "from all" ? `/all_music/${item.singles_id ? 'single' : 'music_from_album'}/`  : `/90s/${item.singles_id ? 'single' : 'music_from_album'}/`%>
+
+                <button onclick="window.location.href= '<%= href + (item.singles_id ? item.singles_id : (item.mfa_id && item.music_title) ? item.mfa_id : item.albums_id) %> ' ">See Detail</button>
             </div>
         <% }) %>
     <% } else { %>
