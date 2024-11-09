@@ -1,11 +1,15 @@
 const { Router } = require("express");
-const { getSingles } = require("../controllers/singleMusicController");
+const { getSingles, postSingleFromForEdit, postUpdatedInfoForSingle } = require("../controllers/singleMusicController");
 
 const singleRouter = Router();
 
 
 
 singleRouter.get("/", getSingles)
+
+singleRouter.post("/edit/:single_id",postSingleFromForEdit)
+
+singleRouter.post("/edit/single/:sgl_id", postUpdatedInfoForSingle)
 
 module.exports = { singleRouter }
 

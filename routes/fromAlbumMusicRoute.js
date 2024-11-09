@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getMusicFromAlbum, getAlbumSelectionForm } = require("../controllers/fromAlbumMusicController");
+const { getMusicFromAlbum, getAlbumSelectionForm, postMusicFromAlbumFormForEdit, postUpdatedInfoForMusicFromAlbum } = require("../controllers/fromAlbumMusicController");
 
 const fromAlbumMusicRouter = Router();
 
@@ -7,9 +7,11 @@ const fromAlbumMusicRouter = Router();
 
 fromAlbumMusicRouter.get("/select_album", getAlbumSelectionForm)
 
-// fromAlbumMusicRouter.get("/:album_id", getMusicFromAlbum)
+fromAlbumMusicRouter.post("/", getMusicFromAlbum);
 
-fromAlbumMusicRouter.post("/", getMusicFromAlbum)
+fromAlbumMusicRouter.post("/edit/:mfa_id", postMusicFromAlbumFormForEdit);
+
+fromAlbumMusicRouter.post("/edit/mfa/:mfa_id", postUpdatedInfoForMusicFromAlbum);
 
 module.exports = { fromAlbumMusicRouter }
 

@@ -1,8 +1,9 @@
-const { getAllAlbums, addAlbum, getArtists } = require("../db/query");
+const { getAllAlbums, addAlbum, getArtists, updateAlbum } = require("../db/query");
 
 const getAlbums = async function(req, res)  {
     const allAlbums = await getAllAlbums();
     // console.log(allAlbums);
+    console.log(allAlbums)
     res.render("index", { title: "Albums", page: "cards", active: "albums", items: allAlbums })
 }
 
@@ -12,20 +13,23 @@ const postAlbumFromForEdit = async function(req, res) {
     const allAlbums = await getAllAlbums();
     const artists = await getArtists();
     const album = allAlbums.filter(album => album.albums_id === Number(album_id));
-    console.log(album)
 
     res.render("index", { title: "Edit Album",
         page: "album_form",
         active: "albums",
         mode: "edit",
         album: album,
-        artists: artists
-});
+        artists: artists });
+}
 
-
+const postUpdatedInfoForAlbum = async function (req, res) {
+    const { alb_id }= req.params;
+    await updateAlbum(req.body, Number(alb_id))
+    res.redirect("/albums")
 }
 
 module.exports = {
     getAlbums,
-    postAlbumFromForEdit
+    postAlbumFromForEdit,
+    postUpdatedInfoForAlbum
 }

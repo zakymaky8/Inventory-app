@@ -1,4 +1,4 @@
-const { getMusicFromAlbum_fromdb, get_albums_fromdb, getAllMusicFromOneAlbum } = require("../db/query")
+const { getMusicFromAlbum_fromdb, get_albums_fromdb, getAllMusicFromOneAlbum, getArtists, getAllAlbums, updateMusicFromAlbum } = require("../db/query")
 
 
 const getAlbumSelectionForm = async function (req, res) {
@@ -19,7 +19,33 @@ const getMusicFromAlbum = async function (req, res) {
 }
 
 
+const postMusicFromAlbumFormForEdit = async function(req, res) {
+    const { mfa_id } = req.params;
+    const allMfas = await getMusicFromAlbum_fromdb();
+    const allAlbums = await getAllAlbums();
+    const artists = await getArtists();
+    const mfa = allMfas.filter(mfa => mfa.mfa_id === Number(mfa_id));
+
+    res.render("index", { title: `Edit ${mfa[0].music_title}`,
+        page: "music_in_album",
+        active: "from album",
+        mode: "edit",
+        mfa: mfa,
+        artists: artists,
+        albums: allAlbums
+    });
+}
+
+const postUpdatedInfoForMusicFromAlbum = async function (req, res) {
+    const { mfa_id }= req.params;
+    await updateMusicFromAlbum(req.body, Number(mfa_id))
+    res.redirect("/music_from_albums/select_album/")
+}
+
+
 module.exports = {
     getMusicFromAlbum,
-    getAlbumSelectionForm
+    getAlbumSelectionForm,
+    postMusicFromAlbumFormForEdit,
+    postUpdatedInfoForMusicFromAlbum
 }

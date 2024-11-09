@@ -1,8 +1,8 @@
-<form action="/single_added" method="POST" class="album-form">
+<form action="<%= mode === "create" ? '/single_added' : `/singles/edit/single/${single[0].singles_id}`  %>" method="POST" class="album-form">
 
     <div>
         <label for="album-title">Music Title: </label>
-        <input type="text" name="music_title" id="album-title" required>
+        <input type="text" name="music_title" id="album-title" required value="<%= mode === "create" ? "" :  single[0].music_title %>">
     </div>
 
     <div>
@@ -18,56 +18,30 @@
     <div>
         <fieldset>
             <legend>Select Genres:</legend><br>
-
-            <label>
-                <input type="radio" name="genre" value="Pop"> Pop
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Rock"> Rock
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Hip-Hop/Rap"> Hip-Hop/Rap
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Jazz"> Jazz
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Electronic/Dance"> Electronic/Dance
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="R&B/Soul"> R&B/Soul
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Country"> Country
-            </label><br>
-
-            <label>
-                <input type="radio" name="genre" value="Other"> Other
-            </label><br>
+            <% const genres = ["Pop", "Rock", "Hip-Hop/Rap", "Jazz", "Electronic/Dance", "R&B/Soul", "Country", "Other"] %>
+            <% genres.map(genre => { %>
+                <label>
+                    <input  type="radio" name="genre" value="<%= genre  %>"> <%= genre %>
+                </label><br>
+            <% }) %>
         </fieldset>
     </div>
 
     <div>
         <label for="release-year">Release Year: </label>
-        <input type="date" name="release_year" id="release-year">
+        <input type="date" name="release_year" id="release-year" value="<%= mode === "create" ? "" :  single[0].release_year %>">
     </div>
 
     <div>
         <label for="personal-rating">Personal Rating: </label>
-        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10">
+        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10" value="<%= mode === "create" ? "" :  single[0].personal_rating %>">
     </div>
     <div>
         <label for="description">
-            Description: <textarea name="description" id="description">Describe your music ....</textarea>
+            Description: <textarea rows="10" cols="30" name="description" id="description"><%= mode === "create" ? "Describe Your Music ..." :  single[0].description %></textarea>
         </label>
     </div>
 
-    <button type="submit">Add</button>
+    <button type="submit"><%= mode==="edit" ? "Edit" : "Add" %></button>
 
 </form>

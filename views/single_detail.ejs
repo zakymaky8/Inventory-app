@@ -10,12 +10,13 @@
             <p><b>Genre: </b><strong><%= details[0].genre %></strong></p>
             <p><b>Personal Rating: </b><strong><%= details[0].personal_rating %></strong></p>
             <p><b>Description: </b> <strong><%= details[0].description %></strong></p>
-        </div>,
+        </div>
         <div class="btns">
             <form onsubmit="return certify()" action='<%= '/delete_single/' + details[0].singles_id %> '  method="POST">
                 <button title="delete" style="background: rgb(124, 9, 9);" type="submit">🗑️</button>
             </form>
-            <form action="/single/edit/" method="POST">
+
+            <form action="<%= '/singles/edit/' + details[0].singles_id %>" method="POST">
                 <button title="edit" style="background: rgb(8, 8, 127);">✏️</button>
             </form>
         </div>
