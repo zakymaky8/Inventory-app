@@ -1,2 +1,2 @@
 # Inventory-app
-Inventory management app for an imaginary store.
+Inventory management app for an musical informations.
