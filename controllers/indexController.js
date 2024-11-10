@@ -1,4 +1,4 @@
-const { getArtists, addArtist, addAlbum, addSingle, get_albums_fromdb, addMusicFromAlbum, fetchTopRatedItemsFrom_db } = require("../db/query");
+const { getArtists, addArtist, addAlbum, addSingle, get_albums_fromdb, addMusicFromAlbum, fetchTopRatedItemsFrom_db, fetchSearchResult } = require("../db/query");
 const { countries } =  require("countries-list");
 let countriesList = Object.values(countries).map(country => country.name).sort();
 
@@ -75,8 +75,14 @@ const postMusicFromAlbumData = async function(req, res) {
 
 const getTopRatedItems = async function(req,res) {
     const topRatedAlbums = await fetchTopRatedItemsFrom_db();
-    console.log(topRatedAlbums)
     res.render("index", { title: "Top Rated Albums", page: "cards", active: "top rated", items: topRatedAlbums })
+}
+
+const postSearch = async (req, res) => {
+    const { search, type } = req.body;
+    const dataFrom_db = await fetchSearchResult(search, type);
+    console.log(req.body)
+    res.render("index", { title: "Search Results", page: "cards", active: `${type}`, items: dataFrom_db })
 }
 
 module.exports = {
@@ -88,5 +94,6 @@ module.exports = {
             postAlbumData,
             postSingleMusicData,
             postMusicFromAlbumData,
-            getTopRatedItems
+            getTopRatedItems,
+            postSearch
         }

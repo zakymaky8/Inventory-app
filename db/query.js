@@ -240,6 +240,13 @@ const updateMusicFromAlbum = async function(entries, mfa_id) {
    console.log("Updating done ....");
 }
 
+const fetchSearchResult = async (search_key, type) => {
+    const albums = await pool.query(`SELECT * FROM albums AS alb JOIN artists AS art ON art.artists_id = alb.artist_id WHERE alb.album_title LIKE $1 `, [`%${search_key}%`]);
+    const singles = await pool.query(`SELECT * FROM singles AS sgl JOIN artists AS art ON art.artists_id = sgl.artist_id  WHERE sgl.music_title LIKE $1`, [`%${search_key}%`] )
+    const musicFromAlbum = await pool.query(`SELECT * FROM music_from_album AS mfa JOIN artists AS art ON art.artists_id = mfa.artist_id JOIN albums AS alb ON alb.albums_id =  mfa.album_id WHERE mfa.music_title LIKE $1`, [`%${search_key}%`] )
+    return type === "albums" ? albums.rows : type === "singles" ? singles.rows : type === 'from album' ? musicFromAlbum.rows : [...albums.rows, ...singles.rows, ...musicFromAlbum.rows]
+}
+
 module.exports = {
     getArtists,
     addArtist,
@@ -259,5 +266,6 @@ module.exports = {
     updateSingle,
     updateAlbum,
     updateMusicFromAlbum,
-    fetchTopRatedItemsFrom_db
+    fetchTopRatedItemsFrom_db,
+    fetchSearchResult
 }

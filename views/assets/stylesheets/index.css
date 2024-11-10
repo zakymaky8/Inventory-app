@@ -76,7 +76,11 @@ nav {
     color: blue;
     background: rgb(118, 100, 1);
 }
-
+#search {
+    min-width: 200px;
+    height: 45px;
+    font-size: 20px;
+}
 main {
     margin: 10px;
     box-shadow: 2px 2px 2px 2px black;

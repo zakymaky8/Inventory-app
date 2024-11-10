@@ -27,8 +27,15 @@
     <aside>
         <form action="/search" method="POST">
             <label style="color: #5bae12;" for="search">Search: </label>
-            <input type="search" name="search" id="search" placeholder="search music ...">
-            <!-- <input type="submit" value="🔎"> -->
+            <input type="search" name="search" id="search" placeholder="search music ..." required>
+            <select name="type" id="type" required>
+                <option value="" selected disabled>select type</option>
+                <option value="from all">all</option>
+                <option value="singles">single</option>
+                <option value="albums">album</option>
+                <option value="from album">music from album</option>
+            </select>
+            <input type="submit" value="🔎" style="background: black; padding: 6px; border-radius: 50%; font-size: 19px">
         </form>
         <div class="preferences">
             <a  class="<%= active==='albums' ? 'active' : ''  %>"  href="/albums"><button>albums</button></a><br>
