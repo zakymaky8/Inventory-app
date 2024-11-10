@@ -1,7 +1,7 @@
 <form action="/music_from_albums" method="POST" class="select-album">
     <div>
         <label for="select-album">Select Album: </label>
-        <select name="album" id="select-album">
+        <select name="album" id="select-album" required>
             <option value="" selected disabled>Select one or all</option>
             <option value="all_albums"> From all Albums</option>
             <% albums.map( album => { %>

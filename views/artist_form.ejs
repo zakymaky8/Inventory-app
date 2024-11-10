@@ -8,11 +8,11 @@
     <% } %>
     <div>
         <label for="artist-name">Artist Name: </label>
-        <input type="text" name="artist_name" id="artist-name">
+        <input type="text" name="artist_name" id="artist-name" required>
     </div>
     <div>
         <label for="artist-country">Country: </label>
-        <select name="artist_country" id="artist-country">
+        <select name="artist_country" id="artist-country" required>
             <option value="" selected disabled>Select Country</option>
             <% countries.map(country => { %>
                 <option value= ' <%= country %> ' > <%= country %> </option>
@@ -21,7 +21,7 @@
     </div>
     <div>
         <label for="album-count">Album Count: </label>
-        <input type="number" name="album_count" id="album-count">
+        <input type="number" name="album_count" id="album-count" required>
     </div>
     <button type="submit">Add</button>
 

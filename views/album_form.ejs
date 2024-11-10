@@ -2,7 +2,7 @@
 
     <div>
         <label for="album-title">Album Title: </label>
-        <input type="text" name="album_title" id="album-title" value="<%= mode === "create" ? "" :  album[0].album_title %>">
+        <input type="text" name="album_title" id="album-title" value="<%= mode === "create" ? "" :  album[0].album_title %>" required>
     </div>
 
     <div>
@@ -22,7 +22,7 @@
             <% const genres = ["Pop", "Rock", "Hip-Hop/Rap", "Jazz", "Electronic/Dance", "R&B/Soul", "Country", "Other"] %>
             <% genres.map(genre => { %>
                 <label>
-                    <input <%= (mode ==="edit" && album.album_genres && album.album_genres.split(",").some(gen => gen === genre)) ? checked : "" %> type="checkbox" name="genre" value="<%= genre  %>"> <%= genre %>
+                    <input checked <%= (mode ==="edit" && album.album_genres && album.album_genres.split(",").some(gen => gen === genre)) ? checked : "" %> type="checkbox" name="genre" value="<%= genre  %>"> <%= genre %>
                 </label><br>
             <% }) %>
 
@@ -31,19 +31,19 @@
 
     <div>
         <label for="release-year">Album Release Year: </label>
-        <input type="date" name="release_year" id="release-year" value="<%= mode === "create" ? "" : album[0].album_release_year %>">
+        <input type="date" name="release_year" id="release-year" value="<%= mode === "create" ? "" : album[0].album_release_year %>" required>
     </div>
     <div>
         <label for="cover-url">Paste cover url: </label>
-        <input type="text" name="cover_url" id="cover-url" value="<%= mode === "create" ? "" : album[0].cover_url %>">
+        <input type="text" name="cover_url" id="cover-url" value="<%= mode === "create" ? "" : album[0].cover_url %>" required>
     </div>
     <div>
         <label for="personal-rating">Personal Rating: </label>
-        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10" value="<%= mode === "create" ? "" : album[0].album_personal_rating %>">
+        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10" value="<%= mode === "create" ? "" : album[0].album_personal_rating %>" required>
     </div>
     <div>
         <label for="fav-track">
-            Most Fav Track <input type="text" name="most_fav_track" id="fav-track" value="<%= mode === "create" ? "" : album[0].most_fav_tracks %>">
+            Most Fav Track <input type="text" name="most_fav_track" id="fav-track" value="<%= mode === "create" ? "" : album[0].most_fav_tracks %>" required>
         </label>
     </div>
     <div>

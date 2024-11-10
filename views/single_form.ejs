@@ -21,7 +21,7 @@
             <% const genres = ["Pop", "Rock", "Hip-Hop/Rap", "Jazz", "Electronic/Dance", "R&B/Soul", "Country", "Other"] %>
             <% genres.map(genre => { %>
                 <label>
-                    <input  type="radio" name="genre" value="<%= genre  %>"> <%= genre %>
+                    <input checked type="radio" name="genre" value="<%= genre  %>"> <%= genre %>
                 </label><br>
             <% }) %>
         </fieldset>
@@ -29,16 +29,16 @@
 
     <div>
         <label for="release-year">Release Year: </label>
-        <input type="date" name="release_year" id="release-year" value="<%= mode === "create" ? "" :  single[0].release_year %>">
+        <input type="date" name="release_year" id="release-year" value="<%= mode === "create" ? "" :  single[0].release_year %>" required>
     </div>
 
     <div>
         <label for="personal-rating">Personal Rating: </label>
-        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10" value="<%= mode === "create" ? "" :  single[0].personal_rating %>">
+        <input type="number" name="personal_rating" id="personal-rating" min="0" max="10" value="<%= mode === "create" ? "" :  single[0].personal_rating %>" required>
     </div>
     <div>
         <label for="description">
-            Description: <textarea rows="10" cols="30" name="description" id="description"><%= mode === "create" ? "Describe Your Music ..." :  single[0].description %></textarea>
+            Description: <textarea rows="10" cols="30" name="description" required id="description"><%= mode === "create" ? "Describe Your Music ..." :  single[0].description %></textarea>
         </label>
     </div>
 

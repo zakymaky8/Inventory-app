@@ -31,7 +31,7 @@
             <% const genres = ["Pop", "Rock", "Hip-Hop/Rap", "Jazz", "Electronic/Dance", "R&B/Soul", "Country", "Other"] %>
             <% genres.map(genre => { %>
                 <label>
-                    <input type="radio" name="genre" value="<%= genre  %>"> <%= genre %>
+                    <input checked type="radio" name="genre" value="<%= genre  %>"> <%= genre %>
                 </label><br>
             <% }) %>
         </fieldset>
