@@ -110,6 +110,17 @@ const getEveryMusic = async function() {
     return all_music;
 }
 
+const fetchTopRatedItemsFrom_db = async function() {
+    // const singles = await getAllSingles();
+    const albums = await getAllAlbums();
+    // const musicFromAlbum = await getMusicFromAlbum_fromdb();
+    // const topRatedSingle = singles.filter(single => Number(single.personal_rating) > 8);
+    const topRatedALbums = albums.filter(album => Number(album.album_personal_rating) > 8);
+    // const topRatedMfa = musicFromAlbum.filter(mfa => Number(mfa.personal_rating) > 8)
+    const allTopRatedAlbums = [...topRatedALbums]
+    return allTopRatedAlbums
+}
+
 
 function sliceAndNumfy(year)  {
     return Number(year.slice(0, 4))
@@ -247,5 +258,6 @@ module.exports = {
     deleteMusicFromAlbumRecord,
     updateSingle,
     updateAlbum,
-    updateMusicFromAlbum
+    updateMusicFromAlbum,
+    fetchTopRatedItemsFrom_db
 }

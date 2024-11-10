@@ -1,4 +1,11 @@
 <form action="/artist_added" method="POST" class="artist-form">
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.map(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
     <div>
         <label for="artist-name">Artist Name: </label>
         <input type="text" name="artist_name" id="artist-name">

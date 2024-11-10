@@ -2,8 +2,6 @@ const { getAllAlbums, addAlbum, getArtists, updateAlbum } = require("../db/query
 
 const getAlbums = async function(req, res)  {
     const allAlbums = await getAllAlbums();
-    // console.log(allAlbums);
-    console.log(allAlbums)
     res.render("index", { title: "Albums", page: "cards", active: "albums", items: allAlbums })
 }
 

@@ -1,13 +1,27 @@
-const { getArtists, addArtist, addAlbum, addSingle, get_albums_fromdb, addMusicFromAlbum } = require("../db/query");
+const { getArtists, addArtist, addAlbum, addSingle, get_albums_fromdb, addMusicFromAlbum, fetchTopRatedItemsFrom_db } = require("../db/query");
+const { countries } =  require("countries-list");
+let countriesList = Object.values(countries).map(country => country.name).sort();
+
+const {body, validationResult} = require("express-validator");
+
+const validateArtisForm = [
+    body("album_count")
+        .notEmpty().withMessage("Album Count shouldn't be empty")
+        .isNumeric().withMessage("Album count should be a number")
+        .isLength({min: 0, max: 30}).withMessage("album count shouldn't exceed 30 and less than 0"),
+    body("artist_name")
+        .trim()
+        .notEmpty().withMessage("Artist Name shouldn't be empty"),
+    body("artist_country")
+        .notEmpty().withMessage("Artist Name shouldn't be empty"),
+]
+
 
 const getHomePage = function (req, res)  {
     res.render("index", { title: "Home", page: "home", active: "home" });
 }
 
 const getArtistForm = function (req, res)  {
-    const { countries } =  require("countries-list");
-    let countriesList = Object.values(countries).map(country => country.name).sort();
-
     res.render("index", {
                           title: "Add Artist",
                           page: "artist_form",
@@ -59,6 +73,12 @@ const postMusicFromAlbumData = async function(req, res) {
 }
 
 
+const getTopRatedItems = async function(req,res) {
+    const topRatedAlbums = await fetchTopRatedItemsFrom_db();
+    console.log(topRatedAlbums)
+    res.render("index", { title: "Top Rated Albums", page: "cards", active: "top rated", items: topRatedAlbums })
+}
+
 module.exports = {
             getHomePage,
             getArtistForm,
@@ -67,5 +87,6 @@ module.exports = {
             postArtistData,
             postAlbumData,
             postSingleMusicData,
-            postMusicFromAlbumData
+            postMusicFromAlbumData,
+            getTopRatedItems
         }
