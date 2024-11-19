@@ -115,7 +115,7 @@ const fetchTopRatedItemsFrom_db = async function() {
     const albums = await getAllAlbums();
     // const musicFromAlbum = await getMusicFromAlbum_fromdb();
     // const topRatedSingle = singles.filter(single => Number(single.personal_rating) > 8);
-    const topRatedALbums = albums.filter(album => Number(album.album_personal_rating) > 8);
+    const topRatedALbums = albums.filter(album => Number(album.album_personal_rating) >= 8);
     // const topRatedMfa = musicFromAlbum.filter(mfa => Number(mfa.personal_rating) > 8)
     const allTopRatedAlbums = [...topRatedALbums]
     return allTopRatedAlbums
@@ -244,6 +244,10 @@ const fetchSearchResult = async (search_key, type) => {
     const albums = await pool.query(`SELECT * FROM albums AS alb JOIN artists AS art ON art.artists_id = alb.artist_id WHERE alb.album_title LIKE $1 `, [`%${search_key}%`]);
     const singles = await pool.query(`SELECT * FROM singles AS sgl JOIN artists AS art ON art.artists_id = sgl.artist_id  WHERE sgl.music_title LIKE $1`, [`%${search_key}%`] )
     const musicFromAlbum = await pool.query(`SELECT * FROM music_from_album AS mfa JOIN artists AS art ON art.artists_id = mfa.artist_id JOIN albums AS alb ON alb.albums_id =  mfa.album_id WHERE mfa.music_title LIKE $1`, [`%${search_key}%`] )
+    if (type === "all") {
+        console.log([...albums.rows, ...singles.rows, ...musicFromAlbum.rows]);
+        
+    }
     return type === "albums" ? albums.rows : type === "singles" ? singles.rows : type === 'from album' ? musicFromAlbum.rows : [...albums.rows, ...singles.rows, ...musicFromAlbum.rows]
 }
 

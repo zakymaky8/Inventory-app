@@ -22,7 +22,7 @@
             <% const genres = ["Pop", "Rock", "Hip-Hop/Rap", "Jazz", "Electronic/Dance", "R&B/Soul", "Country", "Other"] %>
             <% genres.map(genre => { %>
                 <label>
-                    <input checked <%= (mode ==="edit" && album.album_genres && album.album_genres.split(",").some(gen => gen === genre)) ? checked : "" %> type="checkbox" name="genre" value="<%= genre  %>"> <%= genre %>
+                    <input <%= (mode ==="edit" && album.album_genres && album.album_genres.split(",").some(gen => gen === genre)) ? checked : "" %> type="checkbox" name="genre" value="<%= genre  %>"> <%= genre %>
                 </label><br>
             <% }) %>
 
